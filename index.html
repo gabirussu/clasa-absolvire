@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasa a VIII-a — Promoția 2025 · CN Mihai Viteazul Turda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #B8D4E0;          /* albastrul eșarfei */
+      --glacier: #D8E8EE;         /* gri glaciar strălucitor */
+      --indigo: #2E1F6B;          /* indigo profund */
+      --dark: #1A1050;            /* indigo fundal principal */
+      --dark2: #221860;           /* secțiuni alternante */
+      --dark3: #1E1558;           /* carduri */
+      --text: #EEF6FA;            /* alb rece */
+      --muted: rgba(184,212,224,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(160deg, #1A1050 0%, #2E1F6B 35%, #3A5A8A 70%, #7AAECC 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(26,16,80,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .music-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .music-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .music-btn.playing { border-color: var(--accent); color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100svh;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #1A1050 0%, #2E1F6B 35%, #3A5A8A 70%, #7AAECC 100%);
+    }
+
+    /* ── HERO STÂNGA ── */
+    .hero-left {
+      flex: 0 0 35%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: center;
+      padding: 6rem 1rem 3rem;
+      position: relative;
+      z-index: 2;
+      height: 100%;
+    }
+
+    /* ── SPARKLING ── */
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 60%, rgba(184,212,224,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: sparkle-anim var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle-anim {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: var(--op, 0.7); transform: scale(1.2); }
+    }
+
+    /* ── HERO DREAPTA — CARUSEL ── */
+    .hero-right {
+      flex: 0 0 65%;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+      height: 100%;
+    }
+
+    .carousel-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: #0a0a1a;
+    }
+
+    .carousel-slide .slide-placeholder {
+      width: 100%;
+      height: 100%;
+      background: rgba(184,212,224,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .carousel-slide .slide-placeholder span { font-size: 2rem; opacity: 0.2; }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,16,80,0.4) 0%, transparent 40%),
+                  linear-gradient(to top, rgba(26,16,80,0.3) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 3;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(184,212,224,0.35);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .carousel-dot.active {
+      background: var(--glacier);
+      width: 18px;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 768px) {
+      #hero { flex-direction: column; }
+      .hero-left { padding: 5rem 1.5rem 2rem; justify-content: center; }
+      .hero-right { min-height: 40vh; flex: none; }
+    }
+
+    #confetti-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(184,212,224,0.1);
+      border: 1px solid rgba(184,212,224,0.3);
+      color: var(--glacier);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.95;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title .class { color: var(--text); }
+    .hero-title .year {
+      color: transparent;
+      -webkit-text-stroke: 2px var(--glacier);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: var(--muted);
+      margin-top: 3rem;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrapper {
+      display: flex;
+      gap: 1.5rem;
+      margin: 3rem 0 2.5rem;
+      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+
+    .countdown-number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .countdown-sep {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--glacier);
+      align-self: flex-start;
+      padding-top: 0.2rem;
+      opacity: 0.5;
+    }
+
+    .hero-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .hero-date span { color: var(--glacier); }
+
+    .hero-pulse {
+      display: inline-block;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), text-shadow 0.6s;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .hero-pulse.activ {
+      transform: scale(1.12);
+      text-shadow: 0 0 30px rgba(184,212,224,0.6), 0 0 60px rgba(184,212,224,0.3);
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .scroll-down svg { width: 20px; opacity: 0.4; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    section:not(#hero) {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-full { max-width: 100%; padding: 5rem 0; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--glacier);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--glacier);
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── STATS ── */
+    #statistici { background: var(--dark2); max-width: 100%; padding: 5rem 2rem; isolation: isolate; }
+    #statistici > .inner { max-width: 1100px; margin: 0 auto; }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    .stat-card { flex: 0 1 180px; }
+
+    .stat-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s, box-shadow 0.4s, background 0.4s;
+    }
+
+    .stat-card:hover { transform: translateY(-4px); border-color: rgba(184,212,224,0.3); }
+
+    .stat-card.puls-activ {
+      transform: scale(4);
+      border-color: rgba(184,212,224,0.6);
+      background: rgba(46,31,107,0.95);
+      box-shadow: 0 0 40px rgba(184,212,224,0.2), 0 20px 60px rgba(0,0,0,0.4);
+      z-index: 100;
+      position: relative;
+    }
+
+    .stat-emoji { font-size: 2rem; margin-bottom: 0.75rem; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--glacier);
+      line-height: 1;
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    /* ── CRONICA ── */
+    #cronica {
+      max-width: 960px;
+      padding: 6rem 1rem;
+      margin: 0 auto;
+    }
+
+    .cronica-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-style: italic;
+      line-height: 2;
+      color: rgba(216,232,238,0.75);
+    }
+
+    .cronica-body p {
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .cronica-body p.vizibil {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cronica-body p.pauza {
+      color: rgba(216,232,238,0.35);
+      font-size: 0.9em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-style: normal;
+      margin: 1.5rem 0;
+    }
+
+    .cronica-body p.citat {
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      color: var(--glacier);
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--accent);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    .cronica-body p.lista {
+      padding-left: 2rem;
+      color: var(--accent);
+      font-style: normal;
+      font-size: 1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .cronica-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--glacier);
+      margin: 2.5rem 0 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .cronica-body h3.vizibil {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── POVESTEA NOASTRĂ ── */
+    .story-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    .story-card { flex: 0 1 240px; }
+
+    .story-card {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.25s;
+    }
+
+    .story-card:hover { transform: translateY(-4px); }
+
+    .story-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--dark2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-img img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .story-img .placeholder-icon { font-size: 2.5rem; opacity: 0.3; }
+
+    .story-body { padding: 1.5rem; }
+
+    .story-year {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--glacier);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── SCRISOARE ── */
+    #scrisoare {
+      max-width: 960px;
+      padding: 6rem 1rem;
+      margin: 0 auto;
+    }
+
+    .scrisoare-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--glacier);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .scrisoare-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 2;
+      color: rgba(216,232,238,0.75);
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .scrisoare-body p { margin-bottom: 1.4rem; }
+
+    .scrisoare-body p.scurt {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--text);
+      margin: 2rem 0;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--accent);
+      text-align: left;
+      hyphens: none;
+    }
+
+    .scrisoare-final {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--glacier);
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,212,224,0.15);
+    }
+
+    /* ── EFECT STRĂLUCIRE ── */
+    @keyframes shimmer-move {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    #scrisoare .shimmer-text {
+      background: linear-gradient(
+        90deg,
+        rgba(216,232,238,0.6) 0%,
+        rgba(216,232,238,0.6) 35%,
+        #ffffff 48%,
+        var(--glacier) 50%,
+        #ffffff 52%,
+        rgba(216,232,238,0.6) 65%,
+        rgba(216,232,238,0.6) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer-move 4s linear infinite;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ── ELEVI ── */
+    .elevi-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    .elev-card {
+      flex: 0 0 calc((100% - 6 * 1.25rem) / 7);
+    }
+
+    .elev-card { }
+
+    .elev-card {
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .elev-card:hover { transform: translateY(-5px) scale(1.02); border-color: rgba(184,212,224,0.3); }
+
+    .elev-card {
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.4s, box-shadow 0.4s;
+    }
+
+
+    .elev-avatar {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .elev-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .elev-initials {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .elev-name-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 0.75rem 0.75rem;
+      background: linear-gradient(to top, rgba(10,8,30,0.92) 0%, transparent 100%);
+      text-align: center;
+    }
+
+    .elev-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .elev-initial-family {
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .elev-quote { display: none; }
+
+    /* gemeni badge */
+    .twin-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(184,212,224,0.12);
+      color: var(--glacier);
+      border: 1px solid rgba(216,232,238,0.25);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── VIDEO ── */
+    #video { background: var(--dark2); max-width: 100%; padding: 5rem 2rem; }
+    #video > .inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+    .video-wrapper {
+      margin-top: 2.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .video-wrapper .video-icon { font-size: 3rem; opacity: 0.2; }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+    }
+
+    /* ── MESAJ FINAL ── */
+    #final {
+      text-align: center;
+      padding: 6rem 2rem;
+      max-width: 700px;
+    }
+
+    .final-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .final-quote em { color: var(--glacier); font-style: normal; }
+
+    .final-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 3rem;
+    }
+
+    .final-names {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── MODAL ELEV ── */
+    .elev-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,6,40,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .elev-modal-overlay.open { display: flex; }
+
+    .elev-modal {
+      background: linear-gradient(135deg, #221860 0%, #1A1050 100%);
+      border: 1px solid rgba(184,212,224,0.25);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(184,212,224,0.1);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    .elev-modal-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: rgba(184,212,224,0.1);
+      border: 3px solid rgba(184,212,224,0.3);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .elev-modal-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .elev-modal-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .elev-modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .elev-modal-family {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .elev-modal-quote {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--glacier);
+      line-height: 1.6;
+      border-top: 1px solid rgba(184,212,224,0.15);
+      padding-top: 1.25rem;
+    }
+
+    .elev-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: 1px solid rgba(184,212,224,0.2);
+      color: var(--muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .elev-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── AUDIO ── */
+    #bg-audio { display: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .countdown-sep { display: none; }
+      .elev-card { flex: 0 1 calc(50% - 0.625rem); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- AUDIO -->
+<audio id="bg-audio" loop>
+  <source src="top.mp3" type="audio/mpeg">
+</audio>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Promoția 2026</div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <button class="music-btn" id="prezentareBtn" onclick="togglePrezentare()">
+      <span id="prezIcon">▶</span>
+      <span id="prezText">Prezentare</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- STÂNGA -->
+  <div class="hero-left">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;position:relative;">
+      <div class="hero-badge">Colegiul Național „Mihai Viteazul" Turda</div>
+
+      <h1 class="hero-title">
+        <span class="class hero-pulse" id="heroPromotia">Promoția</span><br>
+        <span class="year hero-pulse" id="heroYear">2026</span>
+      </h1>
+
+      <p class="hero-subtitle shimmer-text" style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,2.5vw,1.8rem); font-style:italic; font-weight:300; letter-spacing:0.08em; transform:rotate(-2deg); display:inline-block;">Finalul unui capitol</p>
+
+      <div class="countdown-wrapper" style="margin:1.5rem 0 0;">
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-ore">01</span>
+          <span class="countdown-label">Ore</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-minute">00</span>
+          <span class="countdown-label">Minute</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-secunde">00</span>
+          <span class="countdown-label">Secunde</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:0.75rem;">
+        <button class="music-btn" id="timerStartBtn" onclick="startTimer()" style="opacity:0.15;">▶ Pornește</button>
+        <button class="music-btn" id="timerResetBtn" onclick="resetTimer()" style="opacity:0.15;">↺ Reset</button>
+      </div>
+
+      <p style="margin-top:0.75rem; font-size:1.1rem; letter-spacing:0.18em; color:var(--glacier); font-weight:600;"><span class="hero-pulse" id="heroPanaLa">până la</span> <span class="hero-pulse" id="heroAbsolvire" style="color:var(--accent); font-size:1.3em;">Absolvire</span></p>
+
+      <div style="margin-top:1rem;">
+        <button class="music-btn" id="musicToggle" onclick="toggleMusic()" style="opacity:0.15;">
+          <span id="musicIcon">♪</span>
+          <span id="musicText">Muzică</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DREAPTA — CARUSEL -->
+  <div class="hero-right">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide"><img src="clasa.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=slide-placeholder><span>📸</span>clasa</div>'"></div>
+      <div class="carousel-slide"><img src="baieti.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=slide-placeholder><span>📸</span>băieți</div>'"></div>
+      <div class="carousel-slide"><img src="fete.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=slide-placeholder><span>📸</span>fete</div>'"></div>
+      <div class="carousel-slide"><img src="dirig.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=slide-placeholder><span>📸</span>dirigintă</div>'"></div>
+      <div class="carousel-slide"><img src="prof.jpg" alt="" onerror="this.parentElement.innerHTML='<div class=slide-placeholder><span>📸</span>profesori</div>'"></div>
+      <div class="carousel-slide"><img src="foto1.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto2.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto3.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto4.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto5.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto6.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto7.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto8.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto9.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto10.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto11.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto12.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto13.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto15.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto18.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto20.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto21.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto22.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto23.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto24.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto25.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto26.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto27.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto28.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto29.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto30.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto31.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto32.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto33.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto34.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto35.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto36.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto37.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto38.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto39.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto40.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto41.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto42.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto43.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto44.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto45.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto46.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto47.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto48.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto49.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto50.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto51.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto52.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto53.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto54.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto55.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto56.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto57.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto58.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto59.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto60.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto61.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto62.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto63.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto64.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto65.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto66.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto67.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto68.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto69.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto70.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto71.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto72.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="foto73.jpeg" alt=""></div>
+      <div class="carousel-slide"><img src="grup1.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup2.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup3.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup4.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup5.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup6.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup7.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup8.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup9.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup10.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup11.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup12.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup13.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup14.jpg" alt=""></div>
+      <div class="carousel-slide"><img src="grup15.jpg" alt=""></div>
+    </div>
+    <div class="carousel-overlay"></div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <a href="#statistici" class="scroll-down">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </a>
+</section>
+
+<div style="height: 7rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%); position: relative; z-index: 1;"></div>
+
+<!-- STATISTICI -->
+<div id="statistici">
+  <div class="inner">
+    <p class="section-label" style="visibility:hidden;"></p>
+    <h2 class="section-title">4 ani în numere</h2>
+    <div class="section-divider"></div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">~730</div>
+        <div class="stat-desc">zile de școală parcurse împreună</div>
+        <div class="stat-emoji">📅</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~2.000</div>
+        <div class="stat-desc">teme „aproape" făcute la timp</div>
+        <div class="stat-emoji">📚</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~5.800</div>
+        <div class="stat-desc">ore de curs de la clasa a V-a</div>
+        <div class="stat-emoji">🔔</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">~1.460</div>
+        <div class="stat-desc">pauze de 10 minute (valorificate maxim)</div>
+        <div class="stat-emoji">🍕</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">∞</div>
+        <div class="stat-desc">ore de somn sacrificate înainte de teste</div>
+        <div class="stat-emoji">😴</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">25</div>
+        <div class="stat-desc">elevi care au reușit. Împreună.</div>
+        <div class="stat-emoji">🏆</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height: 7rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%);"></div>
+
+<!-- SCRISOARE -->
+<section id="scrisoare">
+  <p class="section-label" style="text-align:center;">Povestea noastră</p>
+  <div class="section-divider" style="margin:0 auto 2.5rem;"></div>
+  <div style="text-align:center; margin-bottom:1.5rem; opacity:0.15;">
+    <button class="music-btn" id="noiAudioBtn" onclick="toggleNoiAudio()">
+      <span id="noiAudioIcon">♪</span>
+      <span id="noiAudioText">Ascultă</span>
+    </button>
+  </div>
+
+  <div class="scrisoare-intro shimmer-text">
+    A fost odată o clasă.<br>
+    Nu cea mai liniștită. Nici cea mai perfectă.<br>
+    Dar, cu siguranță, una care nu va putea fi uitată.
+  </div>
+
+  <div class="scrisoare-body">
+    <p>La început eram doar niște copii care încercau să găsească sala corectă și să nu uite penarul acasă. Unii eram timizi, alții vorbeau atât de mult încât profesorii ne știau deja numele din prima săptămână. Nu ne cunoșteam prea bine, dar aveam să petrecem împreună ani care urmau să treacă incredibil de repede.</p>
+
+    <p class="scurt">Și au trecut.</p>
+
+    <p>Încet-încet, băncile au devenit locuri unde nu se făceau doar exerciții, ci și prietenii. Pe holuri nu mergeam niciodată singuri. Mereu era cineva care râdea, cineva care întârzia, cineva care întreba: „Avem ceva pentru mâine?" sau „Am avut ceva temă pentru ora asta?"</p>
+
+    <p>Am avut dimineți în care abia ne țineam ochii deschiși și zile în care clopoțelul părea că nu mai sună niciodată. Am avut teste anunțate… și teste „surpriză", acele momente în care toată clasa trecea prin cele cinci stadii ale disperării în mai puțin de 30 de secunde.</p>
+
+    <p>Dar am avut și momente pe care nicio notă nu le poate măsura.</p>
+
+    <p>Râsete în timpul orelor. Priviri care spuneau „suntem pierduți". Colegi care împărțeau ultima foaie, ultimul pix sau răspunsul la exercițiul 3. Excursii, glume pe care doar noi le înțelegeam și acea senzație că, indiferent ce se întâmpla, eram împreună.</p>
+
+    <p class="scurt">
+      În toți anii aceștia, ne-am schimbat.<br>
+      Copiii care au intrat în clasa a V-a nu mai sunt aceiași cu cei care stau astăzi aici.<br><br>
+      Am crescut. Am învățat. Am greșit. Am reușit.
+    </p>
+
+    <p>Și poate că peste ani nu ne vom mai aminti toate lecțiile sau toate formulele. Dar ne vom aminti oamenii. Chipurile. Emoțiile. Zgomotul clasei înainte să intre profesorul. Bucuria ultimei ore de vineri. Panica dinaintea testelor. Și râsul acela care pornea de la unul singur și ajungea la toată clasa.</p>
+
+    <p>Astăzi nu se termină doar gimnaziul. Se termină un capitol din povestea noastră.</p>
+
+    <p>O poveste despre prietenie, despre copilărie și despre niște oameni care au crescut împreună fără să-și dea seama cât de repede trece timpul.</p>
+  </div>
+
+  <div class="scrisoare-final shimmer-text">
+    „N-am fost perfecți. Dar am fost noi."
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<div style="height: 22rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%); position: relative; z-index: 1;"></div>
+
+<!-- ELEVI -->
+<section id="elevi" style="isolation:isolate;">
+  <p class="section-label" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; letter-spacing:0.02em;">„Unele clase se uită repede. Dar aceasta… nu."</p>
+  <h2 class="section-title">25 de povești</h2>
+  <div class="section-divider"></div>
+  <div class="elevi-grid">
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/vlad-b.jpg" alt=""><span class="elev-initials">VB</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Vlad</div><div class="elev-initial-family">B.</div></div>
+      <div class="elev-quote" style="display:none">„Viața e prea scurtă pentru teme neterminate."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/darius-bp.jpg" alt=""><span class="elev-initials">DB</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Darius</div><div class="elev-initial-family">B.</div></div>
+      <div class="elev-quote" style="display:none">„Nu conta câte ore ai dormit înainte de teză. Conta că ai dormit."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/mara-b.jpg" alt=""><span class="elev-initials">MG</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Mara Georgiana</div><div class="elev-initial-family">B.</div></div>
+      <div class="elev-quote" style="display:none">„Optimismul e și el o formă de curaj."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/tania-c.jpg" alt=""><span class="elev-initials">TN</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Tania-Nicoleta</div><div class="elev-initial-family">C.</div></div>
+      <div class="elev-quote" style="display:none">„Am supraviețuit la algebră. Pot supraviețui orice."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/eric-c.jpg" alt=""><span class="elev-initials">EM</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Eric-Mihai</div><div class="elev-initial-family">C.</div></div>
+      <div class="elev-quote" style="display:none">„Suntem diferiți. Eu sunt cel amuzant."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/alex-c.jpg" alt=""><span class="elev-initials">AA</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Alex-Andrei</div><div class="elev-initial-family">C.</div></div>
+      <div class="elev-quote" style="display:none">„Eric greșește mereu. Eu sunt cel serios."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/carina-c.jpg" alt=""><span class="elev-initials">CA</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Carina-Alesia</div><div class="elev-initial-family">C.</div></div>
+      <div class="elev-quote" style="display:none">„Dacă nu știi răspunsul, scrie cu încredere."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/diana-d.jpg" alt=""><span class="elev-initials">DN</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Diana-Nicoleta</div><div class="elev-initial-family">D.</div></div>
+      <div class="elev-quote" style="display:none">„Bunătatea nu costă nimic, dar valorează totul."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/eduard-g.jpg" alt=""><span class="elev-initials">EI</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Eduard Ioan</div><div class="elev-initial-family">G.</div></div>
+      <div class="elev-quote" style="display:none">„Matematica e un sport de contact. Și eu m-am antrenat."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/andrei-k.jpg" alt=""><span class="elev-initials">AP</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Andrei Petre</div><div class="elev-initial-family">K.</div></div>
+      <div class="elev-quote" style="display:none">„Nu e important să fii primul. E important să termini."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/mihnea-l.jpg" alt=""><span class="elev-initials">MZ</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Mihnea Zorin</div><div class="elev-initial-family">L.</div></div>
+      <div class="elev-quote" style="display:none">„Curiozitatea e singurul GPS care nu recalculează."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/darius-l.jpg" alt=""><span class="elev-initials">DL</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Darius</div><div class="elev-initial-family">L.</div></div>
+      <div class="elev-quote" style="display:none">„Câteodată a doua șansă vine deghizată în a treia teză."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/teodora-l.jpg" alt=""><span class="elev-initials">TA</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Teodora-Alexandra</div><div class="elev-initial-family">L.</div></div>
+      <div class="elev-quote" style="display:none">„Zâmbetul e uniforma pe care n-o poți uita acasă."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/andrei-m.jpg" alt=""><span class="elev-initials">AS</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Andrei Ștefan</div><div class="elev-initial-family">M.</div></div>
+      <div class="elev-quote" style="display:none">„Visul mare începe cu un pas mic. Sau cu un referat scris noaptea."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/andrei-mi.jpg" alt=""><span class="elev-initials">AM</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Andrei-Mihai</div><div class="elev-initial-family">M.</div></div>
+      <div class="elev-quote" style="display:none">„Liniștea e o superputere. Eu o am rar, dar o apreciez."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/daria-mo.jpg" alt=""><span class="elev-initials">DA</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Daria</div><div class="elev-initial-family">M.</div></div>
+      <div class="elev-quote" style="display:none">„Cel mai bun răspuns la o întrebare grea e altă întrebare."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/ianis-n.jpg" alt=""><span class="elev-initials">II</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Ianis-Iulian</div><div class="elev-initial-family">N.</div></div>
+      <div class="elev-quote" style="display:none">„Toate visele noastre pot deveni realitate dacă avem curajul de a le urma."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/stefan-p.jpg" alt=""><span class="elev-initials">SD</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Ștefan Darian</div><div class="elev-initial-family">P.</div></div>
+      <div class="elev-quote" style="display:none">„Nu știu ce mă așteaptă. Dar știu că sunt pregătit."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/daria-pop.jpg" alt=""><span class="elev-initials">DM</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Daria Maria</div><div class="elev-initial-family">P.</div></div>
+      <div class="elev-quote" style="display:none">„Creativitatea nu are manual. Din fericire."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/irene-p.jpg" alt=""><span class="elev-initials">IC</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Irene Cristina</div><div class="elev-initial-family">P.</div></div>
+      <div class="elev-quote" style="display:none">„Empatia e materia la care toți avem nota 10."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/matei-s.jpg" alt=""><span class="elev-initials">MC</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Matei Călin</div><div class="elev-initial-family">S.</div></div>
+      <div class="elev-quote" style="display:none">„Am calculat: 4 ani = multă chimie. Și nu mă refer la materie."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/daria-si.jpg" alt=""><span class="elev-initials">DE</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Daria Elena</div><div class="elev-initial-family">Ș.</div></div>
+      <div class="elev-quote" style="display:none">„Fiecare zi de școală a fost o pagină. A ieșit o carte frumoasă."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/david-si.jpg" alt=""><span class="elev-initials">DA</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">David Adrian</div><div class="elev-initial-family">Ș.</div></div>
+      <div class="elev-quote" style="display:none">„Răbdarea e și ea o formă de inteligență. Eu am mult de la ambele."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/ana-so.jpg" alt=""><span class="elev-initials">AS</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">Ana</div><div class="elev-initial-family">S.</div></div>
+      <div class="elev-quote" style="display:none">„Simplitatea e forma supremă a eleganței. La școală și în viață."</div>
+    </div>
+
+    <div class="elev-card" onclick="openElevModal(this)">
+      <div class="elev-avatar"><img src="elev/david-t.jpg" alt=""><span class="elev-initials">DT</span></div>
+      <div class="elev-name-overlay"><div class="elev-name">David</div><div class="elev-initial-family">T.</div></div>
+      <div class="elev-quote" style="display:none">„Nu știu unde mă duc. Dar știu de unde am plecat."</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- VIDEO -->
+<div id="video">
+  <div class="inner">
+    <p class="section-label">Un moment special</p>
+    <h2 class="section-title">Clipa noastră</h2>
+    <div class="section-divider"></div>
+    <div class="video-wrapper" id="videoWrapper">
+      <video id="videoFinal" autoplay muted controls style="width:100%; height:100%; border-radius:16px; display:block;">
+        <source src="videofinal.mp4" type="video/mp4">
+        Browserul tău nu suportă redarea video.
+      </video>
+    </div>
+    <div style="text-align:center; margin-top:1.5rem;">
+      <button onclick="deschideFullscreen()" style="background:var(--accent); color:#1A1050; border:none; padding:0.8rem 2.5rem; border-radius:999px; font-size:1rem; font-weight:700; letter-spacing:0.06em; cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        ⛶ Redă pe tot ecranul
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MESAJ FINAL -->
+<section id="final" style="margin: 0 auto;">
+  <p class="section-label" style="text-align:center;">Un gând de rămas bun</p>
+  <div class="final-quote">
+    „Nu plecăm. Ne <em>transformăm</em>."
+  </div>
+  <p class="final-sub">Colegiul Național „Mihai Viteazul" Turda · Promoția 2026</p>
+  <div class="final-names">
+    Barbu Vlad · Botezan-Pascu Darius · Bumb Mara Georgiana · Cătinaș Tania-Nicoleta ·
+    Chiriac Eric-Mihai · Chiriac Alex-Andrei · Ciordașu Carina-Alesia · Duca Diana-Nicoleta ·
+    Gaia Eduard Ioan · Koti Andrei Petre · Lazăr Mihnea Zorin · Luca Darius ·
+    Ludușan Teodora-Alexandra · Măriuța Andrei Ștefan · Miclea Andrei-Mihai · Morea Daria ·
+    Nicoară Ianis-Iulian · Pamfilie Ștefan Darian · Pop Daria Maria · Popa Irene Cristina ·
+    Selegean Matei Călin · Șipoș Daria Elena · Șipoș David Adrian · Soporan Ana · Topan David
+  </div>
+</section>
+
+<!-- MODAL ELEV -->
+<div class="elev-modal-overlay" id="elevModal" onclick="closeElevModal(event)">
+  <div class="elev-modal">
+    <button class="elev-modal-close" onclick="closeElevModal()">✕</button>
+    <div class="elev-modal-avatar">
+      <img id="modalImg" src="" alt="">
+      <span class="elev-modal-initials" id="modalInitials"></span>
+    </div>
+    <div class="elev-modal-name" id="modalName"></div>
+    <div class="elev-modal-family" id="modalFamily"></div>
+    <div class="elev-modal-quote" id="modalQuote"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Clasa a VIII-a · CN „Mihai Viteazul" Turda · Promoția 2026
+</footer>
+
+<script>
+  // ── CRONOMETRU INVERS — 1 oră ──
+  const TIMER_START = 86400; // secunde (24 ore)
+  let timerSecunde = TIMER_START;
+  let timerInterval = null;
+  let timerRunning = false;
+
+  function afiseazaTimer() {
+    const ore = Math.floor(timerSecunde / 3600);
+    const minute = Math.floor((timerSecunde % 3600) / 60);
+    const sec = timerSecunde % 60;
+    document.getElementById('cd-ore').textContent = String(ore).padStart(2, '0');
+    document.getElementById('cd-minute').textContent = String(minute).padStart(2, '0');
+    document.getElementById('cd-secunde').textContent = String(sec).padStart(2, '0');
+  }
+
+  function startTimer() {
+    const btn = document.getElementById('timerStartBtn');
+    if (!timerRunning) {
+      if (timerSecunde <= 0) return;
+      timerInterval = setInterval(() => {
+        timerSecunde--;
+        afiseazaTimer();
+        if (timerSecunde <= 0) {
+          clearInterval(timerInterval);
+          timerRunning = false;
+          btn.textContent = '▶ Pornește';
+          btn.classList.remove('playing');
+        }
+      }, 1000);
+      timerRunning = true;
+      btn.textContent = '⏸ Pauză';
+      btn.classList.add('playing');
+    } else {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      btn.textContent = '▶ Continuă';
+      btn.classList.remove('playing');
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    timerSecunde = TIMER_START;
+    afiseazaTimer();
+    const btn = document.getElementById('timerStartBtn');
+    btn.textContent = '▶ Pornește';
+    btn.classList.remove('playing');
+  }
+
+  afiseazaTimer();
+
+  // ── MUZICĂ ──
+  let playing = false;
+  const audio = document.getElementById('bg-audio');
+  audio.volume = 0.4;
+
+  function toggleMusic() {
+    const btn = document.getElementById('musicToggle');
+    const icon = document.getElementById('musicIcon');
+    const text = document.getElementById('musicText');
+
+    if (!playing) {
+      audio.play().then(() => {
+        playing = true;
+        btn.classList.add('playing');
+        icon.textContent = '♫';
+        text.textContent = 'Oprește';
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      playing = false;
+      btn.classList.remove('playing');
+      icon.textContent = '♪';
+      text.textContent = 'Muzică';
+    }
+  }
+
+
+  // ── STORY — arată imaginile care există ──
+  document.querySelectorAll('.story-img img').forEach(img => {
+    const tmp = new Image();
+    tmp.onload = () => {
+      img.style.display = 'block';
+      const ph = img.closest('.story-img').querySelector('.placeholder-icon');
+      if (ph) ph.style.display = 'none';
+    };
+    tmp.src = img.src;
+  });
+
+  // ── ELEVI — arată poza dacă există ──
+  document.querySelectorAll('.elev-avatar').forEach(av => {
+    const img = av.querySelector('img');
+    const initials = av.querySelector('.elev-initials');
+    if (!img) return;
+    const tmp = new Image();
+    tmp.onload = () => {
+      img.style.display = 'block';
+      if (initials) initials.style.display = 'none';
+    };
+    tmp.src = img.src;
+  });
+
+  // ── LIGHTBOX ──
+  function openLightbox(item) {
+    const img = item.querySelector('img');
+    if (!img || img.style.display === 'none') return;
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = img.src;
+    lb.classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // Escape gestionat centralizat mai jos (lightbox + modal elev)
+
+  // ── CONFETTI ──
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const colors = ['#B8D4E0', '#D8E8EE', '#7AAECC', '#EEF6FA', '#9BBFCF', '#ffffff'];
+
+  function createParticle() {
+    return {
+      x: Math.random() * canvas.width,
+      y: -10,
+      vx: (Math.random() - 0.5) * 1.5,
+      vy: Math.random() * 2 + 1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: Math.random() * 6 + 3,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 4,
+      opacity: 1,
+      shape: Math.random() > 0.5 ? 'rect' : 'circle'
+    };
+  }
+
+  let frameCount = 0;
+
+  function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    frameCount++;
+    if (frameCount % 4 === 0 && particles.length < 120) {
+      particles.push(createParticle());
+    }
+
+    particles = particles.filter(p => p.y < canvas.height + 20 && p.opacity > 0.05);
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rotation += p.rotationSpeed;
+      p.opacity -= 0.003;
+
+      ctx.save();
+      ctx.globalAlpha = p.opacity;
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.fillStyle = p.color;
+
+      if (p.shape === 'rect') {
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.5);
+      } else {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+    });
+
+    requestAnimationFrame(animateConfetti);
+  }
+
+  animateConfetti();
+
+  // ── CARUSEL ──
+  const track = document.getElementById('carouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  const slides = track.querySelectorAll('.carousel-slide');
+  let currentSlide = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(n) {
+    currentSlide = n;
+    track.style.transform = `translateX(-${n * 100}%)`;
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n);
+    });
+  }
+
+  setInterval(() => {
+    goToSlide((currentSlide + 1) % slides.length);
+  }, 5000);
+
+  // ── VIDEO FULLSCREEN ──
+  const videoFinal = document.getElementById('videoFinal');
+
+  function deschideFullscreen() {
+    if (!videoFinal) return;
+    videoFinal.muted = false;
+    videoFinal.volume = 1;
+    videoFinal.play();
+    if (videoFinal.requestFullscreen) videoFinal.requestFullscreen();
+    else if (videoFinal.webkitRequestFullscreen) videoFinal.webkitRequestFullscreen();
+    else if (videoFinal.mozRequestFullScreen) videoFinal.mozRequestFullScreen();
+  }
+
+  if (videoFinal) {
+    videoFinal.addEventListener('dblclick', deschideFullscreen);
+    document.addEventListener('click', function unmute() {
+      if (videoFinal.muted) { videoFinal.muted = false; videoFinal.volume = 1; }
+      document.removeEventListener('click', unmute);
+    }, { once: true });
+  }
+
+  // ── SPARKLES ──
+  const heroLeft = document.querySelector('.hero-left');
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    const size = Math.random() * 4 + 2;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      --dur:${2 + Math.random() * 3}s;
+      --delay:${Math.random() * 3}s;
+      --op:${0.4 + Math.random() * 0.5};
+      box-shadow: 0 0 ${size * 2}px ${size}px rgba(216,232,238,0.6);
+    `;
+    heroLeft.appendChild(s);
+  }
+
+  // ── PULS HERO — Promoția, 2026, până la, Absolvire ──
+  (function() {
+    const elems = [
+      document.getElementById('heroPromotia'),
+      document.getElementById('heroYear'),
+      document.getElementById('heroPanaLa'),
+      document.getElementById('heroAbsolvire')
+    ];
+    let idx = 0;
+    function pulsHero() {
+      elems.forEach(e => e && e.classList.remove('activ'));
+      elems[idx] && elems[idx].classList.add('activ');
+      idx = (idx + 1) % elems.length;
+    }
+    pulsHero();
+    setInterval(pulsHero, 1500);
+  })();
+
+  // ── PULS SECVENȚIAL CARDURI ELEVI — overlay centrat ──
+  (function() {
+    const cards = document.querySelectorAll('.elev-card');
+    if (!cards.length) return;
+    let idx = 0;
+    const SCALE = 4;
+    const DURATA = 3000;
+    const FADE_MS = 500;
+
+    let overlayVizibil = false;
+    let intervalId = null;
+    let timeoutId = null;
+
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed; z-index: 1000; pointer-events: none;
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(184,212,224,0.6);
+      box-shadow: 0 0 40px rgba(184,212,224,0.2), 0 20px 60px rgba(0,0,0,0.5);
+      opacity: 0; transform: scale(0.6);
+    `;
+    document.body.appendChild(overlay);
+
+    function eleviiVizibili() {
+      const sectiune = document.getElementById('elevi');
+      const r = sectiune.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const vizibil = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+      const procent = vizibil / vh;
+      return procent > 0.5;
+    }
+
+    function ascundeOverlayInstant() {
+      overlay.style.transition = 'none';
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'scale(0.6)';
+      overlayVizibil = false;
+    }
+
+    function ascundeOverlay() {
+      overlay.style.transition = `opacity ${FADE_MS}ms ease, transform ${FADE_MS}ms ease`;
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'scale(0.6)';
+      overlayVizibil = false;
+    }
+
+    function opreCiclu() {
+      if (intervalId) { clearInterval(intervalId); intervalId = null; }
+      if (timeoutId) { clearTimeout(timeoutId); timeoutId = null; }
+      ascundeOverlayInstant();
+    }
+
+    function populateOverlay(card) {
+      const w = card.offsetWidth * SCALE;
+      const h = card.offsetHeight * SCALE;
+      overlay.style.left = (window.innerWidth - w) / 2 + 'px';
+      overlay.style.top = (window.innerHeight - h) / 2 + 'px';
+      overlay.style.width = w + 'px';
+      overlay.style.height = h + 'px';
+      overlay.innerHTML = card.innerHTML;
+      overlay.style.background = getComputedStyle(card).background || '#122333';
+
+      const originalImg = card.querySelector('img');
+      const overlayImg = overlay.querySelector('img');
+      const initials = overlay.querySelector('.elev-initials');
+
+      const pozaExista = originalImg && originalImg.style.display !== 'none' && originalImg.complete && originalImg.naturalWidth > 0;
+
+      if (pozaExista && overlayImg) {
+        overlayImg.src = originalImg.src;
+        overlayImg.style.display = 'block';
+        if (initials) initials.style.display = 'none';
+      } else {
+        if (overlayImg) overlayImg.style.display = 'none';
+        if (initials) initials.style.display = 'flex';
+      }
+    }
+
+    function arataPoza(card) {
+      populateOverlay(card);
+      overlay.style.transition = 'none';
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'scale(0.7)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        overlay.style.transition = `opacity ${FADE_MS}ms ease, transform ${FADE_MS}ms cubic-bezier(0.34,1.56,0.64,1)`;
+        overlay.style.opacity = '1';
+        overlay.style.transform = 'scale(1)';
+        overlayVizibil = true;
+      }));
+    }
+
+    function pulsNext() {
+      if (!eleviiVizibili()) {
+        opreCiclu();
+        return;
+      }
+
+      const card = cards[idx];
+      idx = (idx + 1) % cards.length;
+
+      if (!overlayVizibil) {
+        arataPoza(card);
+      } else {
+        overlay.style.transition = `opacity ${FADE_MS}ms ease, transform ${FADE_MS}ms ease`;
+        overlay.style.opacity = '0';
+        overlay.style.transform = 'scale(1.15)';
+        overlayVizibil = false;
+        setTimeout(() => {
+          if (!eleviiVizibili()) return;
+          arataPoza(card);
+        }, FADE_MS);
+      }
+    }
+
+    function runCiclu() {
+      if (!eleviiVizibili()) return;
+      idx = 0;
+      pulsNext();
+      intervalId = setInterval(() => {
+        if (idx === 0) {
+          clearInterval(intervalId);
+          intervalId = null;
+          ascundeOverlay();
+          timeoutId = setTimeout(runCiclu, 10000);
+        } else {
+          pulsNext();
+        }
+      }, DURATA);
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!eleviiVizibili()) {
+        opreCiclu();
+      } else if (!intervalId && !timeoutId) {
+        timeoutId = setTimeout(runCiclu, 10000);
+      }
+    }, { passive: true });
+
+    timeoutId = setTimeout(runCiclu, 10000);
+  })();
+
+  // ── PULS SECVENȚIAL CARDURI STATISTICI ──
+  (function() {
+    const cards = document.querySelectorAll('.stat-card');
+    if (!cards.length) return;
+    let idx = 0;
+
+    function pulsNext() {
+      cards.forEach(c => c.classList.remove('puls-activ'));
+      cards[idx].classList.add('puls-activ');
+      idx = (idx + 1) % cards.length;
+    }
+
+    pulsNext();
+    setInterval(pulsNext, 2000);
+  })();
+
+  // ── AUDIO POVESTEA NOASTRĂ ──
+  const audioPovestea = new Audio('noi.mp4');
+  audioPovestea.loop = false;
+  audioPovestea.volume = 1.0;
+  let noiPlaying = false;
+
+  function toggleNoiAudio() {
+    const btn = document.getElementById('noiAudioBtn');
+    const icon = document.getElementById('noiAudioIcon');
+    const text = document.getElementById('noiAudioText');
+    if (!noiPlaying) {
+      audioPovestea.play().catch(() => {});
+      noiPlaying = true;
+      btn.classList.add('playing');
+      icon.textContent = '♫';
+      text.textContent = 'Oprește';
+    } else {
+      audioPovestea.pause();
+      noiPlaying = false;
+      btn.classList.remove('playing');
+      icon.textContent = '♪';
+      text.textContent = 'Ascultă';
+    }
+  }
+
+  function suntemPeHeroSauStatistici() {
+    const hero = document.getElementById('hero');
+    const stat = document.getElementById('statistici');
+    const check = (el) => {
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    };
+    return check(hero) || check(stat);
+  }
+
+  // ── MUZICĂ HERO: fade-out și oprire ──
+  function opreșteMuzicaHero() {
+    if (!playing) return;
+    const fadeSteps = 30;
+    const startVol = audio.volume;
+    let step = 0;
+    const fade = setInterval(() => {
+      step++;
+      audio.volume = Math.max(0, startVol * (1 - step / fadeSteps));
+      if (step >= fadeSteps) {
+        clearInterval(fade);
+        audio.pause();
+        audio.volume = 1;
+        playing = false;
+        const btn = document.getElementById('musicToggle');
+        const icon = document.getElementById('musicIcon');
+        const text = document.getElementById('musicText');
+        if (btn) btn.classList.remove('playing');
+        if (icon) icon.textContent = '♪';
+        if (text) text.textContent = 'Muzică';
+      }
+    }, 50);
+  }
+
+  // Oprire muzică hero când statistici ies din viewport (o singură dată)
+  const statisticiSection = document.getElementById('statistici');
+  if (statisticiSection) {
+    let heroMuzicaOprita = false;
+    new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && window.scrollY > statisticiSection.offsetTop && !heroMuzicaOprita) {
+          heroMuzicaOprita = true;
+          obs.disconnect();
+          opreșteMuzicaHero();
+        }
+      });
+    }, { threshold: 0.05 }).observe(statisticiSection);
+  }
+
+  const scrisoareSection = document.getElementById('scrisoare');
+  if (scrisoareSection) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Oprește muzica hero dacă mai rulează (ex: în modul prezentare)
+          opreșteMuzicaHero();
+          audioPovestea.currentTime = 0;
+          audioPovestea.play().catch(() => {});
+        }
+      });
+    }, { threshold: 0.3 }).observe(scrisoareSection);
+  }
+
+  // ── AUDIO GAUDEAMUS — secțiunea #elevi ──
+  const audioGaudeamus = new Audio('gaudeamus.mp3');
+  audioGaudeamus.loop = true;
+  audioGaudeamus.volume = 0.6;
+
+  const eleviSection = document.getElementById('elevi');
+  if (eleviSection) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          audioGaudeamus.play().catch(() => {});
+        } else {
+          audioGaudeamus.pause();
+        }
+      });
+    }, { threshold: 0.3 }).observe(eleviSection);
+  }
+
+  // ── ANIMAȚIE SCROLL CRONICĂ ──
+  const cronicaEls = document.querySelectorAll('#cronica .cronica-body p, #cronica .cronica-body h3');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('vizibil');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cronicaEls.forEach(el => observer.observe(el));
+
+  // ── PREZENTARE FULLSCREEN + SCROLL ──
+  let prezentareActiva = false;
+  let prezentarePauza = false;
+  let scrollInterval = null;
+  const SCROLL_SPEED = 80;
+  const SCROLL_SPEED_LENT = 33;
+  const SCROLL_SPEED_RAPID = 160;
+
+  function togglePrezentare() {
+    if (!prezentareActiva) {
+      startPrezentare();
+    } else if (!prezentarePauza) {
+      pausePrezentare();
+    } else {
+      resumePrezentare();
+    }
+  }
+
+  function startPrezentare() {
+    // Deblochează audioPovestea în contextul unui click de utilizator
+    audioPovestea.pause();
+    audioPovestea.currentTime = 0;
+
+    prezentareActiva = true;
+    prezentarePauza = false;
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!playing) toggleMusic(); // pornim muzica — suntem pe hero
+    setBtnStat('pauza');
+
+    // Fullscreen după ce starea e setată
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+
+    startScroll();
+  }
+
+  function pausePrezentare() {
+    clearInterval(scrollInterval);
+    scrollInterval = null;
+    prezentarePauza = true;
+    setBtnStat('pauzata');
+  }
+
+  function resumePrezentare() {
+    document.body.style.overflow = '';
+    startScroll();
+    prezentarePauza = false;
+    // Muzica hero se reia doar dacă suntem încă pe hero sau statistici
+    if (!playing && suntemPeHeroSauStatistici()) toggleMusic();
+    setBtnStat('pauza');
+  }
+
+  function stopPrezentare() {
+    clearInterval(scrollInterval);
+    scrollInterval = null;
+    prezentareActiva = false;
+    prezentarePauza = false;
+    document.body.style.overflow = '';
+    if (document.fullscreenElement) document.exitFullscreen();
+    setBtnStat('oprit');
+  }
+
+  function startScroll() {
+    const msPerFrame = 16;
+    const scrisoare = document.getElementById('scrisoare');
+    scrollInterval = setInterval(() => {
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      if (window.scrollY >= maxScroll) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          document.body.style.overflow = 'hidden';
+          setBtnStat('pauzata');
+          prezentarePauza = true;
+        }, 800);
+        return;
+      }
+      // Viteză per secțiune
+      let viteza = SCROLL_SPEED;
+      const statEl = document.getElementById('statistici');
+      if (statEl) {
+        const rect = statEl.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) viteza = SCROLL_SPEED_RAPID;
+      }
+      if (scrisoare) {
+        const rect = scrisoare.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) viteza = SCROLL_SPEED_LENT;
+      }
+      window.scrollBy(0, viteza / (1000 / msPerFrame));
+    }, msPerFrame);
+  }
+
+  function setBtnStat(stat) {
+    const btn = document.getElementById('prezentareBtn');
+    const icon = document.getElementById('prezIcon');
+    const text = document.getElementById('prezText');
+    if (stat === 'oprit') {
+      btn.classList.remove('playing');
+      icon.textContent = '▶';
+      text.textContent = 'Prezentare';
+    } else if (stat === 'pauza') {
+      btn.classList.add('playing');
+      icon.textContent = '⏸';
+      text.textContent = 'Pauză';
+    } else if (stat === 'pauzata') {
+      btn.classList.add('playing');
+      icon.textContent = '▶';
+      text.textContent = 'Reia';
+    }
+  }
+
+  // ── MODAL ELEV ──
+  function openElevModal(card) {
+    const img = card.querySelector('.elev-avatar img');
+    const initials = card.querySelector('.elev-initials').textContent;
+    const name = card.querySelector('.elev-name').textContent;
+    const family = card.querySelector('.elev-initial-family').textContent;
+
+    const quote = card.querySelector('.elev-quote').textContent;
+
+    const modalImg = document.getElementById('modalImg');
+    const modalInitials = document.getElementById('modalInitials');
+
+    // Poza dacă există, altfel inițialele
+    if (img && img.style.display !== 'none' && img.src) {
+      modalImg.src = img.src;
+      modalImg.style.display = 'block';
+      modalInitials.style.display = 'none';
+    } else {
+      modalImg.style.display = 'none';
+      modalInitials.style.display = 'block';
+      modalInitials.textContent = initials;
+    }
+
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalFamily').textContent = family;
+    document.getElementById('modalQuote').textContent = quote;
+
+    document.getElementById('elevModal').classList.add('open');
+
+    // Pauză scroll dacă prezentarea e activă
+    if (prezentareActiva && !prezentarePauza) {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+    }
+  }
+
+  function closeElevModal(e) {
+    if (e && e.target !== document.getElementById('elevModal') && !e.target.classList.contains('elev-modal-close')) return;
+    document.getElementById('elevModal').classList.remove('open');
+
+    // Reia scroll dacă prezentarea era activă și nu era pe pauză
+    if (prezentareActiva && !prezentarePauza) startScroll();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('elevModal').classList.contains('open')) {
+        document.getElementById('elevModal').classList.remove('open');
+        if (prezentareActiva && !prezentarePauza) startScroll();
+      } else if (document.getElementById('lightbox').classList.contains('open')) {
+        closeLightbox();
+      }
+    }
+  });
+
+  // Escape din fullscreen nu mai oprește prezentarea automat
+</script>
+</body>
+</html>
