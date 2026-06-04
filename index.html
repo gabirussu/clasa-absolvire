@@ -224,8 +224,8 @@
 
     @media (max-width: 768px) {
       #hero { flex-direction: column; }
-      .hero-left { padding: 5rem 1.5rem 2rem; justify-content: center; }
-      .hero-right { min-height: 40vh; flex: none; }
+      .hero-left { flex: 0 0 auto; padding: 5rem 1.5rem 2rem; justify-content: center; height: auto; }
+      .hero-right { flex: 0 0 45vh; height: 45vh; width: 100%; }
     }
 
     #confetti-canvas {
@@ -962,10 +962,58 @@
     #bg-audio { display: none; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      /* Navbar */
       .nav-links { display: none; }
+      nav { padding: 0.75rem 1.25rem; }
+
+      /* Secțiuni generale */
+      section:not(#hero) { padding: 3.5rem 1.25rem; }
+      #statistici { padding: 3.5rem 1.25rem; }
+      #video { padding: 3.5rem 1.25rem; }
+      #scrisoare { padding: 3.5rem 1.25rem; }
+      #cronica { padding: 3.5rem 1.25rem; }
+      #final { padding: 4rem 1.25rem; }
+
+      /* Hero */
       .countdown-sep { display: none; }
-      .elev-card { flex: 0 1 calc(50% - 0.625rem); }
+      .countdown-wrapper { gap: 1rem; margin: 2rem 0 2rem; }
+      .countdown-item { min-width: 60px; }
+      .hero-subtitle { margin-top: 1.5rem; }
+
+      /* Statistici — 2 pe rând pe mobil */
+      .stat-card { flex: 0 1 calc(50% - 0.75rem); }
+      .stat-card.puls-activ { transform: scale(2.5); }
+
+      /* Povestea noastră — 1 pe rând */
+      .story-card { flex: 0 1 100%; max-width: 360px; }
+
+      /* Elevi — 3 pe rând pe mobil */
+      .elev-card { flex: 0 0 calc((100% - 2 * 1.25rem) / 3); }
+
+      /* Scrisoare */
+      .scrisoare-intro { font-size: clamp(1.4rem, 5vw, 2rem); }
+      .scrisoare-body { font-size: clamp(1.1rem, 4vw, 1.35rem); text-align: left; hyphens: auto; }
+
+      /* Video */
+      #video > .inner { max-width: 100%; }
+
+      /* Modal elev */
+      .elev-modal { padding: 2rem 1.5rem; }
+
+      /* Separatoare mai mici */
+      div[style*="height: 7rem"] { height: 4rem !important; }
+      div[style*="height: 22rem"] { height: 12rem !important; }
+    }
+
+    @media (max-width: 480px) {
+      /* Elevi — 2 pe rând pe telefoane mici */
+      .elev-card { flex: 0 0 calc((100% - 1.25rem) / 2); }
+      .stat-card.puls-activ { transform: scale(1.8); }
+
+      /* Titluri mai mici */
+      .section-title { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+      .final-quote { font-size: clamp(1.3rem, 6vw, 2rem); }
     }
   </style>
 </head>
@@ -1743,7 +1791,7 @@
     const cards = document.querySelectorAll('.elev-card');
     if (!cards.length) return;
     let idx = 0;
-    const SCALE = 4;
+    const SCALE = window.innerWidth < 768 ? 2 : 4;
     const DURATA = 3000;
     const FADE_MS = 500;
 
