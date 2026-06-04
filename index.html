@@ -1247,6 +1247,12 @@
   <p class="section-label" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; letter-spacing:0.02em;">„Unele clase se uită repede. Dar aceasta… nu."</p>
   <h2 class="section-title">25 de povești</h2>
   <div class="section-divider"></div>
+  <div style="text-align:center; margin-bottom:1.5rem; opacity:0.15;">
+    <button class="music-btn" id="gaudeamusBtn" onclick="toggleGaudeamus()">
+      <span id="gaudeamusIcon">♪</span>
+      <span id="gaudeamusText">Oprește muzica</span>
+    </button>
+  </div>
   <div class="elevi-grid">
 
     <div class="elev-card" onclick="openElevModal(this)">
@@ -1982,6 +1988,26 @@
   const audioGaudeamus = new Audio('gaudeamus.mp3');
   audioGaudeamus.loop = true;
   audioGaudeamus.volume = 0.6;
+  let gaudeamusPlaying = false;
+
+  function toggleGaudeamus() {
+    const btn = document.getElementById('gaudeamusBtn');
+    const icon = document.getElementById('gaudeamusIcon');
+    const text = document.getElementById('gaudeamusText');
+    if (gaudeamusPlaying) {
+      audioGaudeamus.pause();
+      gaudeamusPlaying = false;
+      btn.classList.remove('playing');
+      icon.textContent = '♪';
+      text.textContent = 'Pornește muzica';
+    } else {
+      audioGaudeamus.play().catch(() => {});
+      gaudeamusPlaying = true;
+      btn.classList.add('playing');
+      icon.textContent = '♫';
+      text.textContent = 'Oprește muzica';
+    }
+  }
 
   const eleviSection = document.getElementById('elevi');
   if (eleviSection) {
@@ -1989,8 +2015,18 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           audioGaudeamus.play().catch(() => {});
+          gaudeamusPlaying = true;
+          const btn = document.getElementById('gaudeamusBtn');
+          const icon = document.getElementById('gaudeamusIcon');
+          const text = document.getElementById('gaudeamusText');
+          if (btn) { btn.classList.add('playing'); icon.textContent = '♫'; text.textContent = 'Oprește muzica'; }
         } else {
           audioGaudeamus.pause();
+          gaudeamusPlaying = false;
+          const btn = document.getElementById('gaudeamusBtn');
+          const icon = document.getElementById('gaudeamusIcon');
+          const text = document.getElementById('gaudeamusText');
+          if (btn) { btn.classList.remove('playing'); icon.textContent = '♪'; text.textContent = 'Pornește muzica'; }
         }
       });
     }, { threshold: 0.3 }).observe(eleviSection);
