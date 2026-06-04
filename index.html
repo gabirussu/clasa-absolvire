@@ -948,6 +948,37 @@
 
     .elev-modal-close:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── SEPARATOARE ── */
+    .separator-band {
+      background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .separator-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      font-style: italic;
+      letter-spacing: 0.18em;
+      color: #1A3A6B;
+      opacity: 0.45;
+      animation: sep-puls 3.5s ease-in-out infinite;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes sep-puls {
+      0%, 100% { opacity: 0.45; transform: scale(1); }
+      50%       { opacity: 0.7;  transform: scale(1.04); }
+    }
+
+    @media (max-width: 768px) {
+      .separator-text { font-size: clamp(0.8rem, 4vw, 1.1rem); letter-spacing: 0.1em; }
+    }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -1189,7 +1220,7 @@
   </a>
 </section>
 
-<div style="height: 7rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%); position: relative; z-index: 1;"></div>
+<div class="separator-band" style="height: 7rem;"><span class="separator-text">Promoția 2022–2026</span></div>
 
 <!-- STATISTICI -->
 <div id="statistici">
@@ -1232,7 +1263,7 @@
   </div>
 </div>
 
-<div style="height: 7rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%);"></div>
+<div class="separator-band" style="height: 7rem;"><span class="separator-text">Promoția 2022–2026</span></div>
 
 <!-- SCRISOARE -->
 <section id="scrisoare">
@@ -1288,7 +1319,7 @@
   <img id="lightboxImg" src="" alt="">
 </div>
 
-<div style="height: 22rem; background: linear-gradient(180deg, #2E6FA8 0%, #7ABEDC 50%, #2E6FA8 100%); position: relative; z-index: 1;"></div>
+<div class="separator-band" style="height: 22rem;"><span class="separator-text">Promoția 2022–2026</span></div>
 
 <!-- ELEVI -->
 <section id="elevi" style="isolation:isolate;">
