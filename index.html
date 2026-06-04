@@ -2155,9 +2155,12 @@
     startScroll();
   }
 
+  function stopScroll() {
+    if (scrollInterval) { cancelAnimationFrame(scrollInterval); scrollInterval = null; }
+  }
+
   function pausePrezentare() {
-    clearInterval(scrollInterval);
-    scrollInterval = null;
+    stopScroll();
     prezentarePauza = true;
     setBtnStat('pauzata');
   }
@@ -2172,8 +2175,7 @@
   }
 
   function stopPrezentare() {
-    clearInterval(scrollInterval);
-    scrollInterval = null;
+    stopScroll();
     prezentareActiva = false;
     prezentarePauza = false;
     document.body.style.overflow = '';
@@ -2182,12 +2184,18 @@
   }
 
   function startScroll() {
-    const msPerFrame = 16;
     const scrisoare = document.getElementById('scrisoare');
-    scrollInterval = setInterval(() => {
+    const statEl = document.getElementById('statistici');
+    let lastTime = null;
+
+    function frame(ts) {
+      if (!prezentareActiva || prezentarePauza) return;
+      if (!lastTime) lastTime = ts;
+      const dt = ts - lastTime;
+      lastTime = ts;
+
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       if (window.scrollY >= maxScroll) {
-        clearInterval(scrollInterval);
         scrollInterval = null;
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setTimeout(() => {
@@ -2197,9 +2205,8 @@
         }, 800);
         return;
       }
-      // Viteză per secțiune
+
       let viteza = SCROLL_SPEED;
-      const statEl = document.getElementById('statistici');
       if (statEl) {
         const rect = statEl.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) viteza = SCROLL_SPEED_RAPID;
@@ -2208,8 +2215,12 @@
         const rect = scrisoare.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) viteza = SCROLL_SPEED_LENT;
       }
-      window.scrollBy(0, viteza / (1000 / msPerFrame));
-    }, msPerFrame);
+
+      window.scrollBy(0, viteza * dt / 1000);
+      scrollInterval = requestAnimationFrame(frame);
+    }
+
+    scrollInterval = requestAnimationFrame(frame);
   }
 
   function setBtnStat(stat) {
@@ -2262,8 +2273,7 @@
 
     // Pauză scroll dacă prezentarea e activă
     if (prezentareActiva && !prezentarePauza) {
-      clearInterval(scrollInterval);
-      scrollInterval = null;
+      stopScroll();
     }
   }
 
