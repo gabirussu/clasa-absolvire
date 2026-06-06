@@ -2156,7 +2156,7 @@
   }
 
   function stopScroll() {
-    if (scrollInterval) { cancelAnimationFrame(scrollInterval); scrollInterval = null; }
+    if (scrollInterval) { clearInterval(scrollInterval); scrollInterval = null; }
   }
 
   function pausePrezentare() {
@@ -2186,17 +2186,14 @@
   function startScroll() {
     const scrisoare = document.getElementById('scrisoare');
     const statEl = document.getElementById('statistici');
-    let lastTime = null;
+    const MS = 50; // interval în ms
 
-    function frame(ts) {
+    scrollInterval = setInterval(() => {
       if (!prezentareActiva || prezentarePauza) return;
-      if (!lastTime) lastTime = ts;
-      const dt = ts - lastTime;
-      lastTime = ts;
 
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       if (window.scrollY >= maxScroll) {
-        scrollInterval = null;
+        stopScroll();
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setTimeout(() => {
           document.body.style.overflow = 'hidden';
@@ -2216,11 +2213,8 @@
         if (rect.top < window.innerHeight && rect.bottom > 0) viteza = SCROLL_SPEED_LENT;
       }
 
-      window.scrollBy(0, viteza * dt / 1000);
-      scrollInterval = requestAnimationFrame(frame);
-    }
-
-    scrollInterval = requestAnimationFrame(frame);
+      window.scrollBy({ top: viteza * MS / 1000, behavior: 'instant' });
+    }, MS);
   }
 
   function setBtnStat(stat) {
