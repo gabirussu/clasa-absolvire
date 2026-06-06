@@ -2245,31 +2245,9 @@
   // ── MODAL ELEV ──
   function openElevModal(card) {
     const img = card.querySelector('.elev-avatar img');
-    const initials = card.querySelector('.elev-initials').textContent;
-    const name = card.querySelector('.elev-name').textContent;
-    const family = card.querySelector('.elev-initial-family').textContent;
-
-    const quote = card.querySelector('.elev-quote').textContent;
-
-    const modalImg = document.getElementById('modalImg');
-    const modalInitials = document.getElementById('modalInitials');
-
-    // Poza dacă există, altfel inițialele
-    if (img && img.style.display !== 'none' && img.src) {
-      modalImg.src = img.src;
-      modalImg.style.display = 'block';
-      modalInitials.style.display = 'none';
-    } else {
-      modalImg.style.display = 'none';
-      modalInitials.style.display = 'block';
-      modalInitials.textContent = initials;
-    }
-
-    document.getElementById('modalName').textContent = name;
-    document.getElementById('modalFamily').textContent = family;
-    document.getElementById('modalQuote').textContent = quote;
-
-    document.getElementById('elevModal').classList.add('open');
+    if (!img || img.style.display === 'none') return;
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
 
     // Pauză scroll dacă prezentarea e activă
     if (prezentareActiva && !prezentarePauza) {
@@ -2277,18 +2255,15 @@
     }
   }
 
-  function closeElevModal(e) {
-    if (e && e.target !== document.getElementById('elevModal') && !e.target.classList.contains('elev-modal-close')) return;
-    document.getElementById('elevModal').classList.remove('open');
-
-    // Reia scroll dacă prezentarea era activă și nu era pe pauză
+  function closeElevModal() {
+    closeLightbox();
     if (prezentareActiva && !prezentarePauza) startScroll();
   }
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      if (document.getElementById('elevModal').classList.contains('open')) {
-        document.getElementById('elevModal').classList.remove('open');
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        closeLightbox();
         if (prezentareActiva && !prezentarePauza) startScroll();
       } else if (document.getElementById('lightbox').classList.contains('open')) {
         closeLightbox();
