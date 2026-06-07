@@ -1602,7 +1602,7 @@
   // ── MUZICĂ ──
   let playing = false;
   const audio = document.getElementById('bg-audio');
-  audio.volume = 0.4;
+  audio.volume = 0.2;
 
   function toggleMusic() {
     const btn = document.getElementById('musicToggle');
@@ -2022,7 +2022,7 @@
       if (step >= fadeSteps) {
         clearInterval(fade);
         audio.pause();
-        audio.volume = 1;
+        audio.volume = 0.2;
         playing = false;
         const btn = document.getElementById('musicToggle');
         const icon = document.getElementById('musicIcon');
