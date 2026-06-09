@@ -2122,8 +2122,6 @@
     // Deblochează toate elementele audio în contextul unui click de utilizator (necesar pe iOS)
     audioPovestea.play().then(() => audioPovestea.pause()).catch(() => {});
     audioPovestea.currentTime = 0;
-    audioGaudeamus.play().then(() => audioGaudeamus.pause()).catch(() => {});
-    audioGaudeamus.currentTime = 0;
 
     prezentareActiva = true;
     prezentarePauza = false;
