@@ -1498,8 +1498,10 @@
       <iframe id="videoFinal"
         src="https://www.youtube.com/embed/VILawnFQ7Xw?rel=0&modestbranding=1"
         style="width:100%; height:100%; border-radius:16px; display:block; border:0;"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+        allowfullscreen
+        webkitallowfullscreen
+        mozallowfullscreen>
       </iframe>
     </div>
     <div style="text-align:center; margin-top:1.5rem;">
@@ -1760,26 +1762,7 @@
     goToSlide((currentSlide + 1) % slides.length);
   }, 5000);
 
-  // ── VIDEO FULLSCREEN ──
-  const videoFinal = document.getElementById('videoFinal');
-
-  function deschideFullscreen() {
-    if (!videoFinal) return;
-    videoFinal.muted = false;
-    videoFinal.volume = 1;
-    videoFinal.play();
-    if (videoFinal.requestFullscreen) videoFinal.requestFullscreen();
-    else if (videoFinal.webkitRequestFullscreen) videoFinal.webkitRequestFullscreen();
-    else if (videoFinal.mozRequestFullScreen) videoFinal.mozRequestFullScreen();
-  }
-
-  if (videoFinal) {
-    videoFinal.addEventListener('dblclick', deschideFullscreen);
-    document.addEventListener('click', function unmute() {
-      if (videoFinal.muted) { videoFinal.muted = false; videoFinal.volume = 1; }
-      document.removeEventListener('click', unmute);
-    }, { once: true });
-  }
+  // ── VIDEO FULLSCREEN — gestionat nativ de playerul YouTube ──
 
   // ── SPARKLES ──
   const heroLeft = document.querySelector('.hero-left');
