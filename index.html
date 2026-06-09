@@ -2123,12 +2123,11 @@
   function deblocheazaAudio() {
     if (audioDeblocat) return;
     audioDeblocat = true;
-    const elems = [audioPovestea, audioGaudeamus];
-    elems.forEach(a => {
-      const prev = a.muted;
-      a.muted = true;
-      a.play().then(() => { a.pause(); a.currentTime = 0; a.muted = prev; }).catch(() => { a.muted = prev; });
-    });
+    // Deblocăm doar audioPovestea (pornește automat la secțiune)
+    // audioGaudeamus e manual-only — se deblochează la apăsarea butonului
+    const prev = audioPovestea.muted;
+    audioPovestea.muted = true;
+    audioPovestea.play().then(() => { audioPovestea.pause(); audioPovestea.currentTime = 0; audioPovestea.muted = prev; }).catch(() => { audioPovestea.muted = prev; });
   }
 
   function startPrezentare() {
